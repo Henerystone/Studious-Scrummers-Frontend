@@ -1,9 +1,6 @@
 ---
 layout: page
-title: About Me
+title: About the Team
 permalink: /about/
 ---
-
-A Fastpages clone, for CSA - Tirth Thakkar & Haseeb Beg
-
-
+An E-commerce website for computer parts, made by Orlando, Edwin, and Shreyas.

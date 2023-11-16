@@ -2,8 +2,4 @@
 layout: home
 search_exclude: true
 ---
-A modified blog for CSA Based on Fastpages- Tirth Thakkar & Haseeb Beg   
-
-
-
-# Posts
+An E-commerce website for computer parts, made by Orlando, Edwin, and Shreyas.
