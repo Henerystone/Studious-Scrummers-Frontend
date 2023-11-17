@@ -1,9 +1,9 @@
 title: Studious-Scrummers
 description: "August 2023 to June 2024"
-owner_name: Shreyas Sarurkar
+owner_name: The Studious Scrummers
 github_username: henerystone123
-github_repo: "Nighthawk-Pages"
-baseurl: "/Nighthawk-Pages"
+github_repo: "Studious-Scrummers-Frontend"
+baseurl: "/studious-scrummers"
 remote_theme: jekyll/minima
 minima:
 # remote_theme: pages-themes/dinky@v0.2.0
