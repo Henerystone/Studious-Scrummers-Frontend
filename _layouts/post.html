@@ -4,7 +4,6 @@ layout: base
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     {%- if page.description -%}
       {%- if site.html_escape.description -%}
         <p class="page-description">{{ page.description | escape }}</p>
@@ -25,13 +24,13 @@ layout: base
         </time>
       {%- endif -%}
       {%- if page.author -%}
-        • {% for author in page.author %}
+         {% for author in page.author %}
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
             <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
             {%- if forloop.last == false %}, {% endif -%}
         {% endfor %}
       {%- endif %}
-       • {% include reading_time.html -%}
+        {% include reading_time.html -%}
     </p>
 
     {% if page.categories.size > 0 %}
