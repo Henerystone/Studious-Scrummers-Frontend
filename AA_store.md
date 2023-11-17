@@ -1,4 +1,4 @@
 ---
 layout: post
-title: Main
+title: Store
 ---
