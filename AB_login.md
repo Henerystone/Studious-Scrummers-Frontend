@@ -161,6 +161,7 @@ title: Login
             button.innerText = 'LOG OUT';
             button.addEventListener('click', () => {
                 // Remove the loggedIn flag from localStorage
+                localStorage.removeItem("localName");
                 localStorage.removeItem("localEmail");
                 localStorage.removeItem("localPassword");
                 localStorage.removeItem("loggedIn");
