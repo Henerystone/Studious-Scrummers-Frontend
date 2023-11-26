@@ -216,6 +216,7 @@ title: Login
                     localStorage.setItem("localName", document.getElementById("name"),value);
                     localStorage.setItem("localEmail", document.getElementById("uid").value);
                     localStorage.setItem("localPassword", document.getElementById("password").value);
+                    console.log(localStorage.getItem("localName"));
                     console.log(localStorage.getItem("localEmail"));
                     console.log(localStorage.getItem("localPassword"));
                     localStorage.setItem("loggedIn", "true");
