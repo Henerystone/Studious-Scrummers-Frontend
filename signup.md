@@ -143,15 +143,15 @@
 
 <script>
     function logInSwitch() {
-        window.location.href = "/sturdy-fiesta/login";
+        window.location.href = "/studious-scrummers/login";
     }
 
     function signUpUser() {
         console.log("signUpUser() called");
-        var url = "http://localhost:8765";
+        var url = "http://localhost:8999";
 
             // Comment out next line for local testing
-            // url = "https://no-papels.stu.nighthawkcodingsociety.com";
+            // url = "https://studious.duckdns.org";
             const login_url = url + '/api/person/post'; 
             const body = {
                 name: document.getElementById("legalName").value,
@@ -184,7 +184,7 @@
                     // Success!!!
                     // Redirect to Database location
                     console.log("success")
-                    window.location.href = "/sturdy-fiesta/login";
+                    window.location.href = "/studious-scrummers/login";
                 });
     }
 
@@ -210,7 +210,7 @@
             // Success!!!
             // Redirect to Database location
             console.log("success")
-            window.location.href = "/sturdy-fiesta/login";
+            window.location.href = "/studious-scrummers/login";
         });
     }
 </script>

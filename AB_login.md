@@ -140,7 +140,6 @@ title: Login
 </body>
 <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Check if the user is logged in (You need to define your own logic for this)
             if (localStorage.getItem("loggedIn") === "true") {
                 showAccountDetails();
             } else {
@@ -154,10 +153,10 @@ title: Login
             // Create and append the email and stock elements
             const emailDiv = document.createElement("div");
             emailDiv.innerHTML = "Email: " + localStorage.getItem("localEmail");
+            emailDiv.innerHTML = "Name: " + localStorage.getItem("localName");
             document.getElementById("accountDetails").appendChild(emailDiv);
             const stockDiv = document.createElement("div");
             document.getElementById("accountDetails").appendChild(stockDiv);
-            // Create a button element
             const button = document.createElement('button');
             button.innerText = 'LOG OUT';
             button.addEventListener('click', () => {
@@ -177,7 +176,7 @@ title: Login
             document.getElementById("accountDetails").style.display = "none";
         }
         function signUpSwitch() {
-            window.location.href = "/Studious-Scrummers-Frontend/signup";
+            window.location.href = "/studious-scrummers/signup";
         }
         function login_user() {
             // You can make a POST request here to your authentication endpoint
@@ -186,6 +185,7 @@ title: Login
             //  url = "https://studious.duckdns.org"; 
             const login_url = url + '/authenticate';
             const body = {
+                name: document.getElementById("name").value,
                 email: document.getElementById("uid").value,
                 password: document.getElementById("password").value,
             };
@@ -212,13 +212,14 @@ title: Login
                     }
                     // Success!!!
                     // Redirect to Database location
+                    localStorage.setItem("localName", document.getElementById("name"),value);
                     localStorage.setItem("localEmail", document.getElementById("uid").value);
                     localStorage.setItem("localPassword", document.getElementById("password").value);
                     console.log(localStorage.getItem("localEmail"));
                     console.log(localStorage.getItem("localPassword"));
                     localStorage.setItem("loggedIn", "true");
                     showAccountDetails();
-                    window.location.href = "/sturdy-fiesta/login";
+                    window.location.href = "/studious-scrummers/login";
                 });
         }
     </script>
