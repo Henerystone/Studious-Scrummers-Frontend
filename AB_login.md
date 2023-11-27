@@ -153,7 +153,6 @@ title: Login
             // Create and append the email and stock elements
             const emailDiv = document.createElement("div");
             emailDiv.innerHTML = "Email: " + localStorage.getItem("localEmail");
-            emailDiv.innerHTML = "Name: " + localStorage.getItem("localName");
             document.getElementById("accountDetails").appendChild(emailDiv);
             const stockDiv = document.createElement("div");
             document.getElementById("accountDetails").appendChild(stockDiv);
@@ -161,7 +160,6 @@ title: Login
             button.innerText = 'LOG OUT';
             button.addEventListener('click', () => {
                 // Remove the loggedIn flag from localStorage
-                localStorage.removeItem("localName");
                 localStorage.removeItem("localEmail");
                 localStorage.removeItem("localPassword");
                 localStorage.removeItem("loggedIn");
@@ -186,7 +184,6 @@ title: Login
             //  url = "https://studious.duckdns.org"; 
             const login_url = url + '/authenticate';
             const body = {
-                name: document.getElementById("name").value,
                 email: document.getElementById("uid").value,
                 password: document.getElementById("password").value,
             };
@@ -213,10 +210,8 @@ title: Login
                     }
                     // Success!!!
                     // Redirect to Database location
-                    localStorage.setItem("localName", document.getElementById("name"),value);
                     localStorage.setItem("localEmail", document.getElementById("uid").value);
                     localStorage.setItem("localPassword", document.getElementById("password").value);
-                    console.log(localStorage.getItem("localName"));
                     console.log(localStorage.getItem("localEmail"));
                     console.log(localStorage.getItem("localPassword"));
                     localStorage.setItem("loggedIn", "true");
