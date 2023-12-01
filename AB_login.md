@@ -32,7 +32,7 @@ title: Login
             justify-content: center;
         }
         .container {
-            background-color: white;
+            background-color: #242424;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
