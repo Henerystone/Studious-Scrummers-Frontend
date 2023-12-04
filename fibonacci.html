@@ -1,0 +1,79 @@
+---
+layout: post
+title: Fibonacci
+---
+<head>
+    <title>Fibonacci Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #fibonacciForm {
+            width: 300px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px #aaa;
+        }
+        #fibonacciForm label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #fibonacciForm input, #fibonacciForm select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        #fibonacciForm input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        #fibonacciForm input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            font-size: 18px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Fibonacci Numbers</h1>
+    <form id="fibonacciForm">
+        <label for="values">Number of values:</label><br>
+        <input type="number" id="values" name="values" min="1" max="150"><br>
+        <label for="even">Even numbers only:</label><br>
+        <input type="checkbox" id="even" name="even"><br>
+        <input type="submit" value="Generate">
+    </form>
+    <p id="result"></p>
+    <script>
+        $(document).ready(function(){
+            $("#fibonacciForm").submit(function(event){
+                event.preventDefault();
+                var values = $("#values").val();
+                var even = $("#even").is(":checked");
+                $.get("http://localhost:8999/api/analytics/fibonacci?", { values: values, even: even }, function(data, status){
+                    $("#result").html("Fibonacci numbers: " + data);
+                });
+            });
+        });
+    </script>
+</body>
