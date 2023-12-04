@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Store
+title: Number Sort
 ---
 
 <head>

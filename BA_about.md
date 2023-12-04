@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About the Team
+title: Sorting Visual
 permalink: /about/
 ---
 
