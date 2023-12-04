@@ -80,7 +80,7 @@
                     list.push(Math.floor(Math.random() * 100));
                 }
                 var serializedList = list.join(",");
-                $.get("http://localhost:8999/api/analytics/", function(data, status){
+                $.get("http://studious.duckdns.org/api/analytics/", function(data, status){
                     // Sort the data by id in descending order
                     data.sort(function(a, b) {
                         return b.id - a.id;
