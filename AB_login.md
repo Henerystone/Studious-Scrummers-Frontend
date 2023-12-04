@@ -216,7 +216,7 @@ title: Login
                     console.log(localStorage.getItem("localPassword"));
                     localStorage.setItem("loggedIn", "true");
                     showAccountDetails();
-                    window.location.href = "/studious-scrummers/login";
+                    window.location.href = "/studious-scrummers/AB_login";
                 });
         }
     </script>

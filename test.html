@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sorting Algorithms</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #sortForm {
+            width: 300px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px #aaa;
+        }
+        #sortForm label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #sortForm input, #sortForm select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        #sortForm input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        #sortForm input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sorting Algorithms</h1>
+    <form id="sortForm">
+        <label for="size">Size of the list:</label><br>
+        <input type="number" id="size" name="size" min="1"><br>
+        <label for="algorithm">Choose a sorting algorithm:</label><br>
+        <select id="algorithm" name="algorithm">
+            <option value="bubble">Bubble Sort</option>
+            <option value="selection">Selection Sort</option>
+            <option value="insertion">Insertion Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="bucket">Bucket Sort</option>
+            <option value="shell">Shell Sort</option>
+        </select><br>
+        <input type="submit" value="Sort">
+    </form>
+    <p id="result"></p>
+    <script>
+        $(document).ready(function(){
+            $("#sortForm").submit(function(event){
+                event.preventDefault();
+                var size = $("#size").val();
+                var algorithm = $("#algorithm").val();
+                var list = [];
+                for (var i = 0; i < size; i++) {
+                    list.push(Math.floor(Math.random() * 100));
+                }
+                var serializedList = list.join(",");
+                $.get("http://studious.duckdns.org/api/analytics/", function(data, status){
+                    // Sort the data by id in descending order
+                    data.sort(function(a, b) {
+                        return b.id - a.id;
+                    });
+                
+                    // Get the first item
+                    var item = data[0];
+                
+                    var html = "Sorting Type: " + item.type + "<br>" +
+                               "Sorting Time: " + item.time + " nanoseconds<br>" +
+                               "Iterations: " + item.iterations + "<br>" +
+                               "Sorted list: " + item.serializedSorted + "<br><br>";
+                
+                    $("#result").html(html);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

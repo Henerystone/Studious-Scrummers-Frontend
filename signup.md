@@ -184,33 +184,34 @@
                     // Success!!!
                     // Redirect to Database location
                     console.log("success")
-                    window.location.href = "/studious-scrummers/login";
+                    window.location.href = "/studious-scrummers/AB_login";
                 });
     }
 
-    function signUpRequest() {
-        var requestOptions = {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'include',
-        };
+function signUpRequest() {
+  var requestOptions = {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'include',
+  };
 
-        let fetchName = document.getElementById("legalName").value
-        let fetchEmail = document.getElementById("uid").value
-        let fetchPassword = document.getElementById("password").value
+  let fetchName = document.getElementById("legalName").value;
+  let fetchEmail = document.getElementById("uid").value;
+  let fetchPassword = document.getElementById("password").value;
+  let dob = "01-01-2000"; // Set the date of birth to "01-01-2000"
 
-        fetch(`http://localhost:8765/api/person/post?email=${fetchEmail}&password=${fetchPassword}@123&name=${fetchName}`, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                const errorMsg = 'Login error: ' + response.status;
-                console.log(errorMsg);
-                return;
-            }
-            // Success!!!
-            // Redirect to Database location
-            console.log("success")
-            window.location.href = "/studious-scrummers/login";
-        });
-    }
+  fetch(`http://localhost:8765/api/person/post?email=${fetchEmail}&password=${fetchPassword}@123&name=${fetchName}&dob=${dob}`, requestOptions)
+    .then(response => {
+      if (!response.ok) {
+        const errorMsg = 'Login error: ' + response.status;
+        console.log(errorMsg);
+        return;
+      }
+      // Success!!!
+      // Redirect to Database location
+      console.log("success")
+      window.location.href = "/studious-scrummers/AB_login";
+    });
+}
 </script>
