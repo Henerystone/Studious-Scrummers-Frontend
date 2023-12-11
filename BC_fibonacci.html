@@ -11,8 +11,14 @@ title: Fibonacci
             padding: 0;
             background-color: #f4f4f4;
         }
+        label{
+            font-family: Arial, sans-serif;
+            color: black;
+            font-size: medium;
+            text-align: center;
+        }
         h1 {
-            color: #333;
+            color: #ffffff;
             text-align: center;
             margin-top: 50px;
         }
@@ -59,7 +65,7 @@ title: Fibonacci
     <form id="fibonacciForm">
         <label for="values">Number of values:</label><br>
         <input type="number" id="values" name="values" min="1" max="150"><br>
-        <label for="even">Even numbers only:</label><br>
+        <label for="even">Even numbers only?</label><br>
         <input type="checkbox" id="even" name="even"><br>
         <input type="submit" value="Generate">
     </form>
