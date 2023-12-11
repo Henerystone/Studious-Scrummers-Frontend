@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Personality Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #sortable-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            cursor: grab;
+        }
+        li {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Sorting Algorithm Personality Test</h1>
+
+<p>Sort the numbers below in the order you prefer by dragging and dropping them.</p>
+
+<ul id="sortable-list">
+    <li>5</li>
+    <li>2</li>
+    <li>8</li>
+    <li>1</li>
+    <li>6</li>
+    <li>4</li>
+    <li>3</li>
+    <li>7</li>
+</ul>
+
+<button onclick="getResult()">Get Result</button>
+
+<p id="result"></p>
+
+<script>
+    // Make the list sortable using jQuery UI
+    $(function () {
+        $("#sortable-list").sortable();
+    });
+
+    // Function to get the result based on the sorted list
+    function getResult() {
+        var sortedList = $("#sortable-list li").map(function () {
+            return $(this).text();
+        }).get().join(',');
+
+        // You can replace the sorting algorithm conditions with your own logic
+        if (sortedList === "1,2,3,4,5,6,7,8") {
+            showResult("Your mind thinks similarly to the Bubble Sort algorithm!");
+        } else if (sortedList === "8,7,6,5,4,3,2,1") {
+            showResult("Your mind thinks similarly to the Reverse Bubble Sort algorithm!");
+        } else {
+            showResult("Your mind thinks uniquely!");
+        }
+    }
+
+    // Function to display the result
+    function showResult(result) {
+        document.getElementById("result").innerText = result;
+    }
+</script>
+
+<!-- Include jQuery and jQuery UI -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</body>
+</html>
