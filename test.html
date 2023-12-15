@@ -15,7 +15,7 @@
             text-align: center;
             margin-top: 50px;
         }
-        #sortForm {
+        #sortForm, #searchForm {
             width: 300px;
             margin: 50px auto;
             padding: 30px;
@@ -24,26 +24,26 @@
             background-color: #fff;
             box-shadow: 0px 0px 10px #aaa;
         }
-        #sortForm label {
+        #sortForm label, #searchForm label {
             display: block;
             margin-bottom: 10px;
         }
-        #sortForm input, #sortForm select {
+        #sortForm input, #sortForm select, #searchForm input, #searchForm select {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
             border: 1px solid #ddd;
         }
-        #sortForm input[type="submit"] {
+        #sortForm input[type="submit"], #searchForm input[type="submit"] {
             background-color: #4CAF50;
             color: white;
             cursor: pointer;
         }
-        #sortForm input[type="submit"]:hover {
+        #sortForm input[type="submit"]:hover, #searchForm input[type="submit"]:hover {
             background-color: #45a049;
         }
-        #result {
+        #result, #searchResult {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
@@ -80,7 +80,7 @@
                     list.push(Math.floor(Math.random() * 100));
                 }
                 var serializedList = list.join(",");
-                $.get("http://studious.duckdns.org/api/analytics/", function(data, status){
+                $.get("http://localhost:8999/api/analytics/", function(data, status){
                     // Sort the data by id in descending order
                     data.sort(function(a, b) {
                         return b.id - a.id;
@@ -101,3 +101,34 @@
     </script>
 </body>
 </html>
+<html>
+<body>
+    <form id="searchForm">
+        <input type="text" id="search" placeholder="Search...">
+        <input type="submit" value="Search">
+    </form>
+    <div id="searchResult"></div>
+    <script>
+        $(document).ready(function(){
+            $("#searchForm").submit(function(event){
+                event.preventDefault();
+                var searchTerm = $("#search").val();
+                $.get("http://localhost:8999/api/analytics/", function(data, status){
+                    var filteredData = data.filter(function(item) {
+                        return item.type.includes(searchTerm);
+                    });
+                    var html = "";
+                    filteredData.forEach(function(item) {
+                        html += "Sorting Type: " + item.type + "<br>" +
+                                "Sorting Time: " + item.time + " nanoseconds<br>" +
+                                "Iterations: " + item.iterations + "<br>" +
+                                "Sorted list: " + item.serializedSorted + "<br><br>";
+                    });
+                    $("#searchResult").html(html);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

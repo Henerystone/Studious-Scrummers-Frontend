@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Sorting Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #game {
+            width: 300px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px #aaa;
+        }
+        #game input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Number Sorting Game</h1>
+    <div id="game">
+        <button onclick="startGame()">Start Game</button>
+    </div>
+    <script>
+        let startTime, endTime;
+        let bestTime = parseFloat(localStorage.getItem('bestTime')) || Infinity;
+
+        function startGame() {
+            let gameDiv = document.getElementById('game');
+            gameDiv.innerHTML = '';
+
+            let numCount = prompt("Enter the number of elements (5, 10, or 20):");
+            let numbers = generateNumbers(numCount);
+            let sortedNumbers = [...numbers].sort((a, b) => a - b);
+
+            let numberDiv = document.createElement('div');
+            numberDiv.innerHTML = 'Numbers: ' + numbers.join(', ');
+            gameDiv.appendChild(numberDiv);
+
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'Enter sorted numbers';
+            gameDiv.appendChild(input);
+
+            input.onchange = function() {
+                endTime = new Date();
+                let timeTaken = (endTime - startTime) / 1000;
+                let userSortedNumbers = input.value.split(',').map(Number);
+
+                if (arraysEqual(sortedNumbers, userSortedNumbers)) {
+                    alert('Correct! Time taken: ' + timeTaken + ' seconds');
+                    if (timeTaken < bestTime) {
+                        bestTime = timeTaken;
+                        localStorage.setItem('bestTime', bestTime);
+                        alert('New best time!');
+                    }
+                } else {
+                    alert('Incorrect, try again.');
+                }
+            };
+
+            startTime = new Date();
+        }
+
+        function generateNumbers(count) {
+            let numbers = [];
+            for (let i = 0; i < count; i++) {
+                numbers.push(Math.floor(Math.random() * 100));
+            }
+            return numbers;
+        }
+
+        function arraysEqual(a, b) {
+            return a.length === b.length && a.every((val, index) => val === b[index]);
+        }
+    </script>
+</body>
+</html>

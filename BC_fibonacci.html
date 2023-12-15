@@ -76,7 +76,7 @@ title: Fibonacci
                 event.preventDefault();
                 var values = $("#values").val();
                 var even = $("#even").is(":checked");
-                $.get("http://studious.duckdns.org/api/analytics/fibonacci?", { values: values, even: even }, function(data, status){
+                $.get("http://localhost:8999/api/analytics/fibonacci?", { values: values, even: even }, function(data, status){
                     $("#result").html("Fibonacci numbers: " + data);
                 });
             });
